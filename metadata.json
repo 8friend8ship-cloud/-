@@ -1,0 +1,5 @@
+{
+  "name": "ClipStream AI Pipeline",
+  "description": "A visual pipeline dashboard simulating the automated acquisition and processing of YouTube content for short-form video creation, powered by Gemini.",
+  "requestFramePermissions": []
+}
