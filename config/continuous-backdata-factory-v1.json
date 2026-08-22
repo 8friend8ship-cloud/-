@@ -1,0 +1,12 @@
+{
+  "version":"FRONT_REQUIREMENT_REVERSE_FACTORY_V1_20260823",
+  "appIds":["APP_CLIPSTREAM"],
+  "controlTargetId":"FPC_CENTRAL_20260823",
+  "cycleMinutes":10,
+  "role":"read-only central pipeline/status UI; consume real central factory state and never simulate collection/processing success",
+  "pipeline":["CENTRAL_FACTORY_STATE_CONSUME","STATUS_UI","ERROR_BLOCKER_VIEW","NO_EXECUTION_SIDE_EFFECT"],
+  "qualityGate":{"realRegistryOnly":true,"mockSuccessForbidden":true,"stateReadbackCount":2},
+  "storage":{"state":"CENTRAL_REGISTRY_POINTER_ONLY"},
+  "physicalTriggerPolicy":"NO_INDEPENDENT_TRIGGER",
+  "approvalBoundary":["NONE_FOR_READONLY","ANY_MUTATION_REQUIRES_CANONICAL_BACKEND_ROUTE"]
+}
