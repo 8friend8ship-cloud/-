@@ -1,0 +1,32 @@
+name: P11 Readonly Hardening CI
+
+on:
+  push:
+    branches:
+      - factory/p11-clipstream-readonly-20260830
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fail-closed policy check
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R -n --exclude-dir=.git --exclude='p11-readonly-hardening-ci.yml' '@google/genai\|GEMINI_API_KEY\|process.env.API_KEY\|mock_token_\|mock_refresh_\|ForBiggerBlazes.mp4\|Simulating success despite API error' .
+          grep -q 'RUNTIME_NOT_CONNECTED' services/gemini.ts
+          grep -q 'AUTH_RUNTIME_NOT_CONNECTED' services/auth.ts
+          grep -q 'READONLY_SOURCE_HARDENING' App.tsx
+      - name: Install
+        run: npm install
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npm run build
