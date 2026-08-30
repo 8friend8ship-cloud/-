@@ -1,0 +1,16 @@
+{
+  "projectId": "P11_CLIPSTREAM",
+  "appId": "APP_CLIPSTREAM",
+  "mode": "READ_ONLY_FAIL_CLOSED",
+  "runtimeConnected": false,
+  "providerWriteEnabled": false,
+  "browserSecretAllowed": false,
+  "mockSuccessAllowed": false,
+  "expectedStatus": "RUNTIME_NOT_CONNECTED",
+  "sourceBranch": "factory/p11-clipstream-readonly-20260830",
+  "verification": {
+    "driveSetupX2": true,
+    "sourceCiX2": true,
+    "runtimeX2": false
+  }
+}
